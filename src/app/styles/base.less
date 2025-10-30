@@ -1,0 +1,34 @@
+html {
+  height: 100%;
+  font-size: 10vw;
+}
+
+body {
+  position: relative;
+
+  /* prettier-ignore */
+  min-width: 375PX;
+
+  /* prettier-ignore */
+  max-width: 720PX;
+  height: 100%;
+  margin: 0 auto;
+  font-size: 14px;
+  color: #d09043;
+  user-select: none;
+  background-color: var(--van-black);
+}
+
+@media screen and (width <= 375px) {
+  html {
+    /* prettier-ignore */
+    font-size: 37.5PX;
+  }
+}
+
+@media screen and (width >= 720px) {
+  html {
+    /* prettier-ignore */
+    font-size: 60PX;
+  }
+}

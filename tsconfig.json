@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "sourceMap": true,
+    "useUnknownInCatchVariables": false,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "outDir": "dist",
+    "lib": ["ESNext", "DOM", "DOM.Iterable", "ScriptHost"],
+    "resolveJsonModule": true
+  },
+  "exclude": ["node_modules", "dist"]
+}

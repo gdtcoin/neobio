@@ -1,0 +1,83 @@
+import { PublicKey } from '@solana/web3.js';
+
+export const POOL_ID_DATA =
+  process.env.ENV === 'production'
+    ? {
+        id: new PublicKey('7XawhbbxtsRcQA8KTkHT9f9nc6d69UwqCDh6U5EEbEmX'),
+        authority: new PublicKey('GThUX1Atko4tqhN2NaiTazWSeFWMuiUvfFnyJyUghFMJ'),
+        openOrders: new PublicKey('3oWQRLewGsUMA2pebcpGPPGrzyRNfbs7fQEMUxPAGgff'),
+        targetOrders: new PublicKey('9x4knb3nuNAzxsV7YFuGLgnYqKArGemY54r2vFExM1dp'),
+        baseVault: new PublicKey('876Z9waBygfzUrwwKFfnRcc7cfY4EQf6Kz1w7GRgbVYW'),
+        quoteVault: new PublicKey('CB86HtaqpXbNWbq67L18y5x2RhqoJ6smb7xHUcyWdQAQ'),
+        marketProgramId: new PublicKey('srmqPvymJeFKQ4zGQed1GFppgkRHL9kaELCbyksJtPX'),
+        marketId: new PublicKey('2AdaV97p6SfkuMQJdu8DHhBhmJe7oWdvbm52MJfYQmfA'),
+        marketBids: new PublicKey('F4LnU7SarP7nLmGPnDHxnCqZ8gRwiFRgbo5seifyicfo'),
+        marketAsks: new PublicKey('BKgZNz8tqJFoZ9gEHKR6k33wBMeXKAaSWpW5zMhSRhr3'),
+        marketEventQueue: new PublicKey('9zw6ztEpHfcKccahzTKgPkQNYhJMPwL4iJJc8BAztNYY'),
+        marketBaseVault: new PublicKey('4zVFCGJVQhSvsJ625qTH4WKgvfPQpNpAVUfjpgCxbKh8'),
+        marketQuoteVault: new PublicKey('9aoqhYjXBqWsTVCEjwtxrotx6sVPGVLmbpVSpSRzTv54'),
+        marketAuthority: new PublicKey('n8meSpYX5n3oRoToN21PFQ5SSYBDf675eub3WMoJJoA'),
+        baseMint: new PublicKey('So11111111111111111111111111111111111111112'),
+        quoteMint: new PublicKey('Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB'),
+        lpMint: new PublicKey('Epm4KfTj4DMrvqn6Bwg2Tr2N8vhQuNbuK8bESFp4k33K'),
+      }
+    : {
+        id: new PublicKey('HQmHQ8sCabd3iBaUvPuhsYKenTGuEpFuboYdJsVShBo4'),
+        authority: new PublicKey('DRayqG9RXYi8WHgWEmRQGrUWRWbhjYWYkCRJDd6JBBak'),
+        openOrders: new PublicKey('Dyg4X4hiuSpkLjUM6FyQDgnriK52SNgrbqku5X9zgvPz'),
+        targetOrders: new PublicKey('8t1SAV3CCgRcqMS6QgN5m9ViuukrXANgMgUpyzUEbdRF'),
+        baseVault: new PublicKey('ETaRMqmEBVTVWpsS5uE4RuXZrxK1FRtxcFbGiNpZNhHc'),
+        quoteVault: new PublicKey('AMCRmbF3odoASAbca3bF7rXUJedJeesHkC7mMXgbYwRz'),
+        marketProgramId: new PublicKey('EoTcMgcDRTJVZDMZWBoU6rhYHZfkNTVEAfz3uUJRcYGj'),
+        marketId: new PublicKey('ipjk1YzowkzH4mmcQqgBRFdhTwbU3mEQCBHjYbYZZvN'),
+        marketBids: new PublicKey('C1vMWRZ3Jqdae5JW4fHwotbb9xfNt29S3QsP8VYCGSD5'),
+        marketAsks: new PublicKey('2hyKffyCyZGavhvTxNKWTceUtuWgJgQhU7cidi9h35hs'),
+        marketEventQueue: new PublicKey('8g2AEGNeYjADr8frFvxWSiJBNqbjo2ykyLRcfaUJ3CJC'),
+        marketBaseVault: new PublicKey('985D37ZZyr8UZ7PPX5USXfRKcD8nUFcKX1JCr8ZWogHY'),
+        marketQuoteVault: new PublicKey('7wMGnDyDrCMg3TQkHf5rgbDoCsoc5z5iaVWigsXuTTUc'),
+        marketAuthority: new PublicKey('e1bx5SagiHxWUpFnfR23bRA5GmMUij2ACivsjQ2BnAV'),
+        baseMint: new PublicKey('So11111111111111111111111111111111111111112'),
+        quoteMint: new PublicKey('C56pWNyrdYVTL7Dxkaya85W5NBRWrQ4oVgfZVuveURrU'),
+        lpMint: new PublicKey('C81gCXxMxEPzgy62cBoiEXQ4G13MeWmyVgBwLqE3kS11'),
+      };
+
+export const GDTC_POOL_ID_DATA =
+  process.env.ENV === 'production'
+    ? {
+        id: new PublicKey('EzJtx66sJEt3pcqLDf8nFYwY66T7RGAHqBv87n42EoMy'),
+        authority: new PublicKey('GThUX1Atko4tqhN2NaiTazWSeFWMuiUvfFnyJyUghFMJ'),
+        openOrders: new PublicKey('5zmFw4iyYNRfr5SECP3xbrdXqE8QE8WLv4fkwhiCq1zj'),
+        targetOrders: new PublicKey('D2hKU1pnJU6KLe3rdTH57Zg48uu34LL4qnKXpK76Qq7i'),
+        baseVault: new PublicKey('5co6oMoLqRGxXZQxoBP1hAuE1gKWe31n5DnLAfDbDg7h'),
+        quoteVault: new PublicKey('HjSGn3Q1YMktaXxv6BqaTj8sEbqfBPbPRPRQJQ2tLo5J'),
+        marketProgramId: new PublicKey('srmqPvymJeFKQ4zGQed1GFppgkRHL9kaELCbyksJtPX'),
+        marketId: new PublicKey('BuykngdJshQ4zHLiGetcRL2ggSpz9EHfUcjeW4ojovZm'),
+        marketBids: new PublicKey('FopQESWT184MjDqLdZSrfBAdkNYeTHDZ7vehdkUjzDRL'),
+        marketAsks: new PublicKey('6NJDxETgBBCrnFWEJ6KJUmHR1934yhFaegDTZWq6egKK'),
+        marketEventQueue: new PublicKey('2fHFpLmVg1BpDgeBBwMKgZiJKoBmZJHFxWhnEaM4LJKs'),
+        marketBaseVault: new PublicKey('HiiJX18tkN2KF69eW8C7Hfk4Mr1EkN86Bgj9Np4Xbhjz'),
+        marketQuoteVault: new PublicKey('57EZAHMDTJwDa36J824dHYbjZEnvb7UPrE2wciyFAaL'),
+        marketAuthority: new PublicKey('DTQ5xpGW4VVnjcpvsXj9v3uwos8LDVJLPtEoTtQ8MUHT'),
+        baseMint: new PublicKey('DVb1znJKBVJzcuzbgvcG3cSghf2i1YzdJqoJFb7ZdQuX'),
+        quoteMint: new PublicKey('So11111111111111111111111111111111111111112'),
+        lpMint: new PublicKey('CCkZ22QhRH8XrPtAgH3JjduAMe95zJR8oS5kyd9qx8Qs'),
+      }
+    : {
+        id: new PublicKey('9napTRrB8jmE7HFsNKQeCGUXW2VbdWLq9dmXJGtoPpws'),
+        authority: new PublicKey('DRayqG9RXYi8WHgWEmRQGrUWRWbhjYWYkCRJDd6JBBak'),
+        openOrders: new PublicKey('Df5WJ3PeDSujBnFo2AvhwnN7hQXYQdgod1M6Kx1x359Z'),
+        targetOrders: new PublicKey('8UxCrxMiSsPhWNdxryFQFANAh3ki3Uqn4M4UZj98knYx'),
+        baseVault: new PublicKey('7UoB4zHz4k5kd3dpEh6X9Bz9ndXuJCdvu9WYKJNnvwpC'),
+        quoteVault: new PublicKey('6YT65hZjz8n3JCMXBiLSkLCviAEeKeYVmDndwyZgyAZt'),
+        marketProgramId: new PublicKey('EoTcMgcDRTJVZDMZWBoU6rhYHZfkNTVEAfz3uUJRcYGj'),
+        marketId: new PublicKey('BwH6feFinbXG9DWwCoMUvuP9RrLD8Z62EQu2NVekBqRG'),
+        marketBids: new PublicKey('DEk1CUjP62ymjpXAEwBPGip2tK5zh78QHq2YYR8nVw99'),
+        marketAsks: new PublicKey('DoHDnhbeY4CQQF65PfTXeE95mE1k5uN3EkUPmSC6HEUG'),
+        marketEventQueue: new PublicKey('B9oAMhMGvr3qJAnqk87fHbeXcqtjYsnzEuUmQGNVXnK8'),
+        marketBaseVault: new PublicKey('67sUGPKU1eEi68dVBfeYSctNGRubmxGDNhkipJtdXxuz'),
+        marketQuoteVault: new PublicKey('CaL39y7CXCC2TTJaR918v6HAtgJaXBhdLmeeL8MaWLM2'),
+        marketAuthority: new PublicKey('AmG3EF5xtMX8Qut5xCf6Ex1XZNFTPX1qgQU1y2tLQoW3'),
+        baseMint: new PublicKey('H3grgvuWs6aa5ANDYQ1Cwh2U9WfpFb9GWVUqZTWr3teq'),
+        quoteMint: new PublicKey('So11111111111111111111111111111111111111112'),
+        lpMint: new PublicKey('EDjdkf9vLQbTE4PJMdWphXxgM8dP7pV8gfmjym3tSPfc'),
+      };

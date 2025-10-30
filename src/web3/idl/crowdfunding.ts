@@ -1,0 +1,1911 @@
+/**
+ * Program IDL in camelCase format in order to be used in JS/TS.
+ *
+ * Note that this is only a type helper and is not the actual IDL. The original
+ * IDL can be found at `target/idl/crowdfunding.json`.
+ */
+export type Crowdfunding = {
+  address: 'AqXKuogwtfi45d4vKdUdXymr2yQhBXsfV8hADmL8NYy6';
+  metadata: {
+    name: 'crowdfunding';
+    version: '0.1.0';
+    spec: '0.1.0';
+    description: 'Created with Anchor';
+  };
+  instructions: [
+    {
+      name: 'ammUsdtToWsol';
+      discriminator: [176, 163, 151, 204, 69, 112, 115, 124];
+      accounts: [
+        {
+          name: 'crowdfundingInfo';
+          docs: ['众筹项目信息账户'];
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [
+                  99,
+                  114,
+                  111,
+                  119,
+                  100,
+                  102,
+                  117,
+                  110,
+                  100,
+                  105,
+                  110,
+                  103,
+                  95,
+                  105,
+                  110,
+                  115,
+                  116,
+                  97,
+                  110,
+                  99,
+                  101,
+                ];
+              },
+            ];
+          };
+        },
+        {
+          name: 'salePhase';
+          docs: ['销售期信息账户'];
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [115, 97, 108, 101, 95, 112, 104, 97, 115, 101];
+              },
+              {
+                kind: 'arg';
+                path: 'id';
+              },
+            ];
+          };
+        },
+        {
+          name: 'userPurchase';
+          docs: ['用户购买记录账户'];
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [117, 115, 101, 114, 95, 112, 117, 114, 99, 104, 97, 115, 101];
+              },
+              {
+                kind: 'account';
+                path: 'user';
+              },
+              {
+                kind: 'arg';
+                path: 'id';
+              },
+              {
+                kind: 'account';
+                path: 'sale_phase.sold_shares';
+                account: 'salePhase';
+              },
+            ];
+          };
+        },
+        {
+          name: 'user';
+          writable: true;
+          signer: true;
+        },
+        {
+          name: 'userUsdtTokenAccount';
+          docs: ['用户 USDT 账户'];
+          writable: true;
+        },
+        {
+          name: 'userWsolTokenAccount';
+          docs: ['用户 WSOL 账户'];
+          writable: true;
+        },
+        {
+          name: 'usdtMintAccount';
+          docs: ['USDT Mint'];
+        },
+        {
+          name: 'projectSigner';
+          docs: ['项目签名账户'];
+          signer: true;
+        },
+        {
+          name: 'swapAccounts';
+          accounts: [
+            {
+              name: 'ammProgram';
+            },
+            {
+              name: 'amm';
+              writable: true;
+            },
+            {
+              name: 'ammAuthority';
+            },
+            {
+              name: 'ammOpenOrders';
+              writable: true;
+            },
+            {
+              name: 'ammCoinVault';
+              writable: true;
+            },
+            {
+              name: 'ammPcVault';
+              writable: true;
+            },
+            {
+              name: 'marketProgram';
+            },
+            {
+              name: 'market';
+              writable: true;
+            },
+            {
+              name: 'marketBids';
+              writable: true;
+            },
+            {
+              name: 'marketAsks';
+              writable: true;
+            },
+            {
+              name: 'marketEventQueue';
+              writable: true;
+            },
+            {
+              name: 'marketCoinVault';
+              writable: true;
+            },
+            {
+              name: 'marketPcVault';
+              writable: true;
+            },
+            {
+              name: 'marketVaultSigner';
+              writable: true;
+            },
+            {
+              name: 'userTokenSource';
+              writable: true;
+            },
+            {
+              name: 'userTokenDestination';
+              writable: true;
+            },
+            {
+              name: 'userSourceOwner';
+              writable: true;
+              signer: true;
+            },
+            {
+              name: 'tokenProgram';
+              address: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA';
+            },
+          ];
+        },
+        {
+          name: 'tokenProgram';
+          address: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA';
+        },
+        {
+          name: 'systemProgram';
+          address: '11111111111111111111111111111111';
+        },
+      ];
+      args: [
+        {
+          name: 'sharesToBuy';
+          type: 'u64';
+        },
+        {
+          name: 'phaseId';
+          type: 'u64';
+        },
+        {
+          name: 'userSuperiorAddress';
+          type: 'pubkey';
+        },
+        {
+          name: 'minimumWsolOut';
+          type: 'u64';
+        },
+      ];
+    },
+    {
+      name: 'ammWsolGdtc';
+      docs: ['用户购买众筹份额（WSOL 到 GDTC，使用 AMM V4）'];
+      discriminator: [94, 238, 185, 110, 47, 184, 91, 28];
+      accounts: [
+        {
+          name: 'crowdfundingInfo';
+          docs: ['众筹项目信息账户'];
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [
+                  99,
+                  114,
+                  111,
+                  119,
+                  100,
+                  102,
+                  117,
+                  110,
+                  100,
+                  105,
+                  110,
+                  103,
+                  95,
+                  105,
+                  110,
+                  115,
+                  116,
+                  97,
+                  110,
+                  99,
+                  101,
+                ];
+              },
+            ];
+          };
+        },
+        {
+          name: 'userPurchase';
+          docs: ['用户购买记录账户'];
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [117, 115, 101, 114, 95, 112, 117, 114, 99, 104, 97, 115, 101];
+              },
+              {
+                kind: 'account';
+                path: 'user';
+              },
+              {
+                kind: 'arg';
+                path: 'id';
+              },
+              {
+                kind: 'account';
+                path: 'user_purchase.purchase_id';
+                account: 'userPurchase';
+              },
+            ];
+          };
+        },
+        {
+          name: 'user';
+          writable: true;
+          signer: true;
+        },
+        {
+          name: 'userWsolAccount';
+          docs: ['用户的 WSOL 账户'];
+          writable: true;
+        },
+        {
+          name: 'userGdtcTokenAccount';
+          docs: ['用户 GDTC token 账户'];
+          writable: true;
+        },
+        {
+          name: 'gdtcBlackholeTokenAccount';
+          docs: ['GDTC 黑洞地址 token account'];
+          writable: true;
+        },
+        {
+          name: 'gdtcMintAccount';
+          docs: ['GDTC Mint'];
+        },
+        {
+          name: 'projectSigner';
+          docs: ['项目签名账户'];
+          signer: true;
+        },
+        {
+          name: 'swapAccounts';
+          accounts: [
+            {
+              name: 'ammProgram';
+            },
+            {
+              name: 'amm';
+              writable: true;
+            },
+            {
+              name: 'ammAuthority';
+            },
+            {
+              name: 'ammOpenOrders';
+              writable: true;
+            },
+            {
+              name: 'ammCoinVault';
+              writable: true;
+            },
+            {
+              name: 'ammPcVault';
+              writable: true;
+            },
+            {
+              name: 'marketProgram';
+            },
+            {
+              name: 'market';
+              writable: true;
+            },
+            {
+              name: 'marketBids';
+              writable: true;
+            },
+            {
+              name: 'marketAsks';
+              writable: true;
+            },
+            {
+              name: 'marketEventQueue';
+              writable: true;
+            },
+            {
+              name: 'marketCoinVault';
+              writable: true;
+            },
+            {
+              name: 'marketPcVault';
+              writable: true;
+            },
+            {
+              name: 'marketVaultSigner';
+              writable: true;
+            },
+            {
+              name: 'userTokenSource';
+              writable: true;
+            },
+            {
+              name: 'userTokenDestination';
+              writable: true;
+            },
+            {
+              name: 'userSourceOwner';
+              writable: true;
+              signer: true;
+            },
+            {
+              name: 'tokenProgram';
+              address: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA';
+            },
+          ];
+        },
+        {
+          name: 'tokenProgram';
+          address: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA';
+        },
+        {
+          name: 'systemProgram';
+          address: '11111111111111111111111111111111';
+        },
+      ];
+      args: [
+        {
+          name: 'sharesToBuy';
+          type: 'u64';
+        },
+        {
+          name: 'phaseId';
+          type: 'u64';
+        },
+        {
+          name: 'minimumGdtcAmount';
+          type: 'u64';
+        },
+      ];
+    },
+    {
+      name: 'claimTokens';
+      discriminator: [108, 216, 210, 231, 0, 212, 42, 64];
+      accounts: [
+        {
+          name: 'crowdfundingInfo';
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [
+                  99,
+                  114,
+                  111,
+                  119,
+                  100,
+                  102,
+                  117,
+                  110,
+                  100,
+                  105,
+                  110,
+                  103,
+                  95,
+                  105,
+                  110,
+                  115,
+                  116,
+                  97,
+                  110,
+                  99,
+                  101,
+                ];
+              },
+            ];
+          };
+        },
+        {
+          name: 'salePhase';
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [115, 97, 108, 101, 95, 112, 104, 97, 115, 101];
+              },
+              {
+                kind: 'arg';
+                path: 'id';
+              },
+            ];
+          };
+        },
+        {
+          name: 'userPurchase';
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [117, 115, 101, 114, 95, 112, 117, 114, 99, 104, 97, 115, 101];
+              },
+              {
+                kind: 'account';
+                path: 'user';
+              },
+              {
+                kind: 'arg';
+                path: 'id';
+              },
+              {
+                kind: 'account';
+                path: 'user_purchase.purchase_id';
+                account: 'userPurchase';
+              },
+            ];
+          };
+        },
+        {
+          name: 'user';
+          writable: true;
+          signer: true;
+        },
+        {
+          name: 'vaultTokenAccount';
+          docs: ['合约持有的 Token 账户 (Vault)'];
+          writable: true;
+        },
+        {
+          name: 'userTokenAccount';
+          docs: ['用户的 Token 接收账户'];
+          writable: true;
+        },
+        {
+          name: 'userSuperiorTokenAccount';
+          docs: ['用户上级 Token 接收地址'];
+          writable: true;
+        },
+        {
+          name: 'userGlobalPoolTokenAccount';
+          writable: true;
+        },
+        {
+          name: 'gdtcBlackholeTokenAccount';
+          writable: true;
+        },
+        {
+          name: 'tokenProgram';
+          address: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA';
+        },
+      ];
+      args: [
+        {
+          name: 'id';
+          type: 'u64';
+        },
+        {
+          name: 'soldShare';
+          type: 'u64';
+        },
+      ];
+    },
+    {
+      name: 'createPhase';
+      docs: ['创建后续销售期（phase_id 自动递增，每期固定 100 份）'];
+      discriminator: [104, 207, 239, 15, 36, 88, 8, 15];
+      accounts: [
+        {
+          name: 'crowdfundingInfo';
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [
+                  99,
+                  114,
+                  111,
+                  119,
+                  100,
+                  102,
+                  117,
+                  110,
+                  100,
+                  105,
+                  110,
+                  103,
+                  95,
+                  105,
+                  110,
+                  115,
+                  116,
+                  97,
+                  110,
+                  99,
+                  101,
+                ];
+              },
+            ];
+          };
+        },
+        {
+          name: 'salePhase';
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [115, 97, 108, 101, 95, 112, 104, 97, 115, 101];
+              },
+              {
+                kind: 'arg';
+                path: 'id';
+              },
+            ];
+          };
+        },
+        {
+          name: 'admin';
+          docs: ['管理员，必须等于 CrowdfundingInfo.admin'];
+          writable: true;
+          signer: true;
+        },
+        {
+          name: 'systemProgram';
+          address: '11111111111111111111111111111111';
+        },
+      ];
+      args: [
+        {
+          name: 'pricePerShare';
+          type: 'u64';
+        },
+        {
+          name: 'startTime';
+          type: 'i64';
+        },
+        {
+          name: 'id';
+          type: 'u64';
+        },
+      ];
+    },
+    {
+      name: 'gdtcToBio';
+      docs: ['项目方将 GDTC 兑换为 BIO（通过 PDA 账户）'];
+      discriminator: [65, 94, 146, 190, 122, 187, 215, 213];
+      accounts: [
+        {
+          name: 'crowdfundingInfo';
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [
+                  99,
+                  114,
+                  111,
+                  119,
+                  100,
+                  102,
+                  117,
+                  110,
+                  100,
+                  105,
+                  110,
+                  103,
+                  95,
+                  105,
+                  110,
+                  115,
+                  116,
+                  97,
+                  110,
+                  99,
+                  101,
+                ];
+              },
+            ];
+          };
+        },
+        {
+          name: 'userPurchase';
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [117, 115, 101, 114, 95, 112, 117, 114, 99, 104, 97, 115, 101];
+              },
+              {
+                kind: 'account';
+                path: 'user';
+              },
+              {
+                kind: 'arg';
+                path: 'id';
+              },
+              {
+                kind: 'account';
+                path: 'user_purchase.purchase_id';
+                account: 'userPurchase';
+              },
+            ];
+          };
+        },
+        {
+          name: 'user';
+          writable: true;
+          signer: true;
+        },
+        {
+          name: 'userGdtcTokenAccount';
+          writable: true;
+        },
+        {
+          name: 'userBioTokenAccount';
+          writable: true;
+        },
+        {
+          name: 'bioBlackholeTokenAccount';
+          writable: true;
+        },
+        {
+          name: 'cpSwapProgram';
+          address: 'DRaycpLY18LhpbydsBWbVJtxpNv9oXPgjRSfpF2bWpYb';
+        },
+        {
+          name: 'authority';
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  95,
+                  97,
+                  110,
+                  100,
+                  95,
+                  108,
+                  112,
+                  95,
+                  109,
+                  105,
+                  110,
+                  116,
+                  95,
+                  97,
+                  117,
+                  116,
+                  104,
+                  95,
+                  115,
+                  101,
+                  101,
+                  100,
+                ];
+              },
+            ];
+            program: {
+              kind: 'account';
+              path: 'cpSwapProgram';
+            };
+          };
+        },
+        {
+          name: 'gdtcBioAmmConfig';
+          docs: ['GDTC-BIO 兑换池的 AMM 配置'];
+          writable: true;
+        },
+        {
+          name: 'gdtcBioPoolState';
+          docs: ['GDTC-BIO 兑换池状态'];
+          writable: true;
+        },
+        {
+          name: 'gdtcBioInputVault';
+          docs: ['GDTC 输入金库'];
+          writable: true;
+        },
+        {
+          name: 'gdtcBioOutputVault';
+          docs: ['BIO 输出金库'];
+          writable: true;
+        },
+        {
+          name: 'gdtcBioInputTokenProgram';
+          docs: ['GDTC 输入代币程序'];
+        },
+        {
+          name: 'gdtcBioOutputTokenProgram';
+          docs: ['BIO 输出代币程序'];
+        },
+        {
+          name: 'gdtcBioInputTokenMint';
+          docs: ['GDTC 输入代币 Mint'];
+        },
+        {
+          name: 'gdtcBioOutputTokenMint';
+          docs: ['BIO 输出代币 Mint'];
+        },
+        {
+          name: 'gdtcBioObservationState';
+          docs: ['GDTC-BIO 兑换池的观察状态'];
+          writable: true;
+        },
+        {
+          name: 'tokenProgram';
+          address: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA';
+        },
+        {
+          name: 'systemProgram';
+          address: '11111111111111111111111111111111';
+        },
+      ];
+      args: [
+        {
+          name: 'sharesToBuy';
+          type: 'u64';
+        },
+        {
+          name: 'phaseId';
+          type: 'u64';
+        },
+      ];
+    },
+    {
+      name: 'initializeCrowdfunding';
+      discriminator: [40, 219, 183, 55, 15, 42, 123, 5];
+      accounts: [
+        {
+          name: 'crowdfundingInfo';
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [
+                  99,
+                  114,
+                  111,
+                  119,
+                  100,
+                  102,
+                  117,
+                  110,
+                  100,
+                  105,
+                  110,
+                  103,
+                  95,
+                  105,
+                  110,
+                  115,
+                  116,
+                  97,
+                  110,
+                  99,
+                  101,
+                ];
+              },
+            ];
+          };
+        },
+        {
+          name: 'firstPhase';
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [115, 97, 108, 101, 95, 112, 104, 97, 115, 101];
+              },
+              {
+                kind: 'const';
+                value: [1, 0, 0, 0, 0, 0, 0, 0];
+              },
+            ];
+          };
+        },
+        {
+          name: 'authority';
+          docs: ['部署者（唯一需要签名的人）'];
+          writable: true;
+          signer: true;
+        },
+        {
+          name: 'usdtMintAccount';
+          writable: true;
+        },
+        {
+          name: 'systemProgram';
+          address: '11111111111111111111111111111111';
+        },
+      ];
+      args: [
+        {
+          name: 'admin';
+          type: 'pubkey';
+        },
+        {
+          name: 'projectSigner';
+          type: 'pubkey';
+        },
+        {
+          name: 'startTime';
+          type: 'i64';
+        },
+        {
+          name: 'wsolMintAccount';
+          type: 'pubkey';
+        },
+        {
+          name: 'gdtcMintAccount';
+          type: 'pubkey';
+        },
+        {
+          name: 'bioMintAccount';
+          type: 'pubkey';
+        },
+        {
+          name: 'gdtcPoolAddress';
+          type: 'pubkey';
+        },
+        {
+          name: 'gdtcBlackholeAddress';
+          type: 'pubkey';
+        },
+      ];
+    },
+    {
+      name: 'usdtToWsol';
+      discriminator: [31, 29, 104, 51, 62, 8, 113, 191];
+      accounts: [
+        {
+          name: 'crowdfundingInfo';
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [
+                  99,
+                  114,
+                  111,
+                  119,
+                  100,
+                  102,
+                  117,
+                  110,
+                  100,
+                  105,
+                  110,
+                  103,
+                  95,
+                  105,
+                  110,
+                  115,
+                  116,
+                  97,
+                  110,
+                  99,
+                  101,
+                ];
+              },
+            ];
+          };
+        },
+        {
+          name: 'salePhase';
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [115, 97, 108, 101, 95, 112, 104, 97, 115, 101];
+              },
+              {
+                kind: 'arg';
+                path: 'id';
+              },
+            ];
+          };
+        },
+        {
+          name: 'userPurchase';
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [117, 115, 101, 114, 95, 112, 117, 114, 99, 104, 97, 115, 101];
+              },
+              {
+                kind: 'account';
+                path: 'user';
+              },
+              {
+                kind: 'arg';
+                path: 'id';
+              },
+              {
+                kind: 'account';
+                path: 'sale_phase.sold_shares';
+                account: 'salePhase';
+              },
+            ];
+          };
+        },
+        {
+          name: 'user';
+          writable: true;
+          signer: true;
+        },
+        {
+          name: 'userUsdtTokenAccount';
+          docs: ['用户的 WSOL 账户'];
+          writable: true;
+        },
+        {
+          name: 'userWsolTokenAccount';
+          writable: true;
+        },
+        {
+          name: 'cpSwapProgram';
+          address: 'DRaycpLY18LhpbydsBWbVJtxpNv9oXPgjRSfpF2bWpYb';
+        },
+        {
+          name: 'authority';
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  95,
+                  97,
+                  110,
+                  100,
+                  95,
+                  108,
+                  112,
+                  95,
+                  109,
+                  105,
+                  110,
+                  116,
+                  95,
+                  97,
+                  117,
+                  116,
+                  104,
+                  95,
+                  115,
+                  101,
+                  101,
+                  100,
+                ];
+              },
+            ];
+            program: {
+              kind: 'account';
+              path: 'cpSwapProgram';
+            };
+          };
+        },
+        {
+          name: 'ammConfig';
+          docs: ['usdt-wsol 兑换池的 AMM 配置'];
+          writable: true;
+        },
+        {
+          name: 'poolState';
+          docs: ['usdt-wsol 兑换池状态'];
+          writable: true;
+        },
+        {
+          name: 'inputVault';
+          docs: ['usdt 输入金库'];
+          writable: true;
+        },
+        {
+          name: 'outputVault';
+          docs: ['wsol 输出金库'];
+          writable: true;
+        },
+        {
+          name: 'inputTokenProgram';
+          docs: ['usdt 输入代币程序'];
+        },
+        {
+          name: 'outputTokenProgram';
+          docs: ['wsol 输出代币程序'];
+        },
+        {
+          name: 'inputTokenMint';
+          docs: ['usdt 输入代币 Mint'];
+        },
+        {
+          name: 'outputTokenMint';
+          docs: ['wsol 输出代币 Mint'];
+        },
+        {
+          name: 'observationState';
+          docs: ['usdt-wsol 兑换池的观察状态'];
+          writable: true;
+        },
+        {
+          name: 'projectSigner';
+          writable: true;
+          signer: true;
+        },
+        {
+          name: 'tokenProgram';
+          address: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA';
+        },
+        {
+          name: 'systemProgram';
+          address: '11111111111111111111111111111111';
+        },
+      ];
+      args: [
+        {
+          name: 'sharesToBuy';
+          type: 'u64';
+        },
+        {
+          name: 'phaseId';
+          type: 'u64';
+        },
+        {
+          name: 'userSuperiorAddress';
+          type: 'pubkey';
+        },
+      ];
+    },
+    {
+      name: 'wsolGdtc';
+      docs: ['用户购买众筹份额（WSOL 到 GDTC，使用 CP Swap）'];
+      discriminator: [109, 2, 124, 173, 42, 200, 106, 137];
+      accounts: [
+        {
+          name: 'crowdfundingInfo';
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [
+                  99,
+                  114,
+                  111,
+                  119,
+                  100,
+                  102,
+                  117,
+                  110,
+                  100,
+                  105,
+                  110,
+                  103,
+                  95,
+                  105,
+                  110,
+                  115,
+                  116,
+                  97,
+                  110,
+                  99,
+                  101,
+                ];
+              },
+            ];
+          };
+        },
+        {
+          name: 'userPurchase';
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [117, 115, 101, 114, 95, 112, 117, 114, 99, 104, 97, 115, 101];
+              },
+              {
+                kind: 'account';
+                path: 'user';
+              },
+              {
+                kind: 'arg';
+                path: 'id';
+              },
+              {
+                kind: 'account';
+                path: 'user_purchase.purchase_id';
+                account: 'userPurchase';
+              },
+            ];
+          };
+        },
+        {
+          name: 'user';
+          writable: true;
+          signer: true;
+        },
+        {
+          name: 'userWsolAccount';
+          docs: ['用户的 WSOL 账户'];
+          writable: true;
+        },
+        {
+          name: 'userGdtcTokenAccount';
+          writable: true;
+        },
+        {
+          name: 'gdtcBlackholeTokenAccount';
+          writable: true;
+        },
+        {
+          name: 'cpSwapProgram';
+          address: 'DRaycpLY18LhpbydsBWbVJtxpNv9oXPgjRSfpF2bWpYb';
+        },
+        {
+          name: 'authority';
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  95,
+                  97,
+                  110,
+                  100,
+                  95,
+                  108,
+                  112,
+                  95,
+                  109,
+                  105,
+                  110,
+                  116,
+                  95,
+                  97,
+                  117,
+                  116,
+                  104,
+                  95,
+                  115,
+                  101,
+                  101,
+                  100,
+                ];
+              },
+            ];
+            program: {
+              kind: 'account';
+              path: 'cpSwapProgram';
+            };
+          };
+        },
+        {
+          name: 'ammConfig';
+          docs: ['WSOL-GDTC 兑换池的 AMM 配置'];
+          writable: true;
+        },
+        {
+          name: 'poolState';
+          docs: ['WSOL-GDTC 兑换池状态'];
+          writable: true;
+        },
+        {
+          name: 'inputVault';
+          docs: ['WSOL 输入金库'];
+          writable: true;
+        },
+        {
+          name: 'outputVault';
+          docs: ['GDTC 输出金库'];
+          writable: true;
+        },
+        {
+          name: 'inputTokenProgram';
+          docs: ['WSOL 输入代币程序'];
+        },
+        {
+          name: 'outputTokenProgram';
+          docs: ['GDTC 输出代币程序'];
+        },
+        {
+          name: 'inputTokenMint';
+          docs: ['WSOL 输入代币 Mint'];
+        },
+        {
+          name: 'outputTokenMint';
+          docs: ['GDTC 输出代币 Mint'];
+        },
+        {
+          name: 'observationState';
+          docs: ['WSOL-GDTC 兑换池的观察状态'];
+          writable: true;
+        },
+        {
+          name: 'projectSigner';
+          writable: true;
+          signer: true;
+        },
+        {
+          name: 'tokenProgram';
+          address: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA';
+        },
+        {
+          name: 'systemProgram';
+          address: '11111111111111111111111111111111';
+        },
+      ];
+      args: [
+        {
+          name: 'sharesToBuy';
+          type: 'u64';
+        },
+        {
+          name: 'phaseId';
+          type: 'u64';
+        },
+      ];
+    },
+  ];
+  accounts: [
+    {
+      name: 'ammConfig';
+      discriminator: [218, 244, 33, 104, 203, 203, 43, 111];
+    },
+    {
+      name: 'crowdfundingInfo';
+      discriminator: [80, 133, 253, 232, 108, 136, 68, 58];
+    },
+    {
+      name: 'observationState';
+      discriminator: [122, 174, 197, 53, 129, 9, 165, 132];
+    },
+    {
+      name: 'poolState';
+      discriminator: [247, 237, 227, 245, 215, 195, 222, 70];
+    },
+    {
+      name: 'salePhase';
+      discriminator: [196, 44, 37, 123, 255, 181, 199, 230];
+    },
+    {
+      name: 'userPurchase';
+      discriminator: [23, 17, 96, 83, 125, 230, 223, 233];
+    },
+  ];
+  errors: [
+    {
+      code: 6000;
+      name: 'unauthorized';
+      msg: 'Unauthorized access';
+    },
+    {
+      code: 6001;
+      name: 'pdaAccountIsNotMatch';
+      msg: 'PDA account is not match';
+    },
+    {
+      code: 6002;
+      name: 'usdtMintAccountIsNotMatch';
+      msg: 'Usdt mint account is not match';
+    },
+    {
+      code: 6003;
+      name: 'usdtInAccountIsNotMatch';
+      msg: 'Usdt In account is not match';
+    },
+    {
+      code: 6004;
+      name: 'invalidProjectSigner';
+      msg: 'Invalid project signer';
+    },
+    {
+      code: 6005;
+      name: 'phaseSoldOut';
+      msg: 'Phase is sold out or not enough shares left';
+    },
+    {
+      code: 6006;
+      name: 'nothingToClaim';
+      msg: 'Nothing to claim at this time';
+    },
+    {
+      code: 6007;
+      name: 'tooManyPhases';
+      msg: 'Too many sale phases have been created. No more phases allowed.';
+    },
+    {
+      code: 6008;
+      name: 'invalidShareAmount';
+      msg: 'Invalid share amount.';
+    },
+    {
+      code: 6009;
+      name: 'tokenMintMismatch';
+      msg: 'Token mint mismatch.';
+    },
+    {
+      code: 6010;
+      name: 'phaseNotStarted';
+      msg: 'This sale phase has not started yet.';
+    },
+    {
+      code: 6011;
+      name: 'invalidVaultOwner';
+      msg: 'Vault token account is not owned by the program.';
+    },
+    {
+      code: 6012;
+      name: 'invalidPhaseId';
+      msg: 'Phase does not exist';
+    },
+    {
+      code: 6013;
+      name: 'invalidSoldShares';
+      msg: 'Concurrent modification detected: sold_shares mismatch';
+    },
+    {
+      code: 6014;
+      name: 'invalidStartTime';
+      msg: 'Invalid start time';
+    },
+    {
+      code: 6015;
+      name: 'invalidMint';
+      msg: 'Invalid mint';
+    },
+    {
+      code: 6016;
+      name: 'wsolMintNotMatch';
+      msg: 'WSOL mint does not match the provided account';
+    },
+    {
+      code: 6017;
+      name: 'gdtcMintNotMatch';
+      msg: 'GDTC mint does not match the provided account';
+    },
+    {
+      code: 6018;
+      name: 'arithmeticOverflow';
+      msg: 'Arithmetic overflow';
+    },
+    {
+      code: 6019;
+      name: 'alreadyBurned';
+      msg: 'Already burned';
+    },
+    {
+      code: 6020;
+      name: 'notBlackHole';
+      msg: 'notBlackHole';
+    },
+    {
+      code: 6021;
+      name: 'insufficientBalance';
+      msg: 'Insufficient balance for operation';
+    },
+    {
+      code: 6022;
+      name: 'maxRewardsToClaim';
+      msg: 'Too many rewards to claim';
+    },
+  ];
+  types: [
+    {
+      name: 'ammConfig';
+      docs: ['Holds the current owner of the factory'];
+      type: {
+        kind: 'struct';
+        fields: [
+          {
+            name: 'bump';
+            docs: ['Bump to identify PDA'];
+            type: 'u8';
+          },
+          {
+            name: 'disableCreatePool';
+            docs: ['Status to control if new pool can be create'];
+            type: 'bool';
+          },
+          {
+            name: 'index';
+            docs: ['Config index'];
+            type: 'u16';
+          },
+          {
+            name: 'tradeFeeRate';
+            docs: ['The trade fee, denominated in hundredths of a bip (10^-6)'];
+            type: 'u64';
+          },
+          {
+            name: 'protocolFeeRate';
+            docs: ['The protocol fee'];
+            type: 'u64';
+          },
+          {
+            name: 'fundFeeRate';
+            docs: ['The fund fee, denominated in hundredths of a bip (10^-6)'];
+            type: 'u64';
+          },
+          {
+            name: 'createPoolFee';
+            docs: ['Fee for create a new pool'];
+            type: 'u64';
+          },
+          {
+            name: 'protocolOwner';
+            docs: ['Address of the protocol fee owner'];
+            type: 'pubkey';
+          },
+          {
+            name: 'fundOwner';
+            docs: ['Address of the fund fee owner'];
+            type: 'pubkey';
+          },
+          {
+            name: 'padding';
+            docs: ['padding'];
+            type: {
+              array: ['u64', 16];
+            };
+          },
+        ];
+      };
+    },
+    {
+      name: 'crowdfundingInfo';
+      type: {
+        kind: 'struct';
+        fields: [
+          {
+            name: 'initialized';
+            type: 'bool';
+          },
+          {
+            name: 'authority';
+            type: 'pubkey';
+          },
+          {
+            name: 'admin';
+            type: 'pubkey';
+          },
+          {
+            name: 'usdtMintAccount';
+            type: 'pubkey';
+          },
+          {
+            name: 'wsolMintAccount';
+            type: 'pubkey';
+          },
+          {
+            name: 'gdtcMintAccount';
+            type: 'pubkey';
+          },
+          {
+            name: 'bioMintAccount';
+            type: 'pubkey';
+          },
+          {
+            name: 'totalShares';
+            type: 'u64';
+          },
+          {
+            name: 'soldShares';
+            type: 'u64';
+          },
+          {
+            name: 'tokenPerShare';
+            type: 'u64';
+          },
+          {
+            name: 'vestingDays';
+            type: 'u64';
+          },
+          {
+            name: 'projectSigner';
+            type: 'pubkey';
+          },
+          {
+            name: 'phaseCount';
+            type: 'u32';
+          },
+          {
+            name: 'gdtcPoolAddress';
+            type: 'pubkey';
+          },
+          {
+            name: 'gdtcBlackholeAddress';
+            type: 'pubkey';
+          },
+        ];
+      };
+    },
+    {
+      name: 'observation';
+      docs: ['The element of observations in ObservationState'];
+      serialization: 'bytemuckunsafe';
+      repr: {
+        kind: 'c';
+        packed: true;
+      };
+      type: {
+        kind: 'struct';
+        fields: [
+          {
+            name: 'blockTimestamp';
+            docs: ['The block timestamp of the observation'];
+            type: 'u64';
+          },
+          {
+            name: 'cumulativeToken0PriceX32';
+            docs: [
+              'the cumulative of token0 price during the duration time, Q32.32, the remaining 64 bit for overflow',
+            ];
+            type: 'u128';
+          },
+          {
+            name: 'cumulativeToken1PriceX32';
+            docs: [
+              'the cumulative of token1 price during the duration time, Q32.32, the remaining 64 bit for overflow',
+            ];
+            type: 'u128';
+          },
+        ];
+      };
+    },
+    {
+      name: 'observationState';
+      serialization: 'bytemuckunsafe';
+      repr: {
+        kind: 'c';
+        packed: true;
+      };
+      type: {
+        kind: 'struct';
+        fields: [
+          {
+            name: 'initialized';
+            docs: ['Whether the ObservationState is initialized'];
+            type: 'bool';
+          },
+          {
+            name: 'observationIndex';
+            docs: ['the most-recently updated index of the observations array'];
+            type: 'u16';
+          },
+          {
+            name: 'poolId';
+            type: 'pubkey';
+          },
+          {
+            name: 'observations';
+            docs: ['observation array'];
+            type: {
+              array: [
+                {
+                  defined: {
+                    name: 'observation';
+                  };
+                },
+                100,
+              ];
+            };
+          },
+          {
+            name: 'padding';
+            docs: ['padding for feature update'];
+            type: {
+              array: ['u64', 4];
+            };
+          },
+        ];
+      };
+    },
+    {
+      name: 'poolState';
+      serialization: 'bytemuckunsafe';
+      repr: {
+        kind: 'c';
+        packed: true;
+      };
+      type: {
+        kind: 'struct';
+        fields: [
+          {
+            name: 'ammConfig';
+            docs: ['Which config the pool belongs'];
+            type: 'pubkey';
+          },
+          {
+            name: 'poolCreator';
+            docs: ['pool creator'];
+            type: 'pubkey';
+          },
+          {
+            name: 'token0Vault';
+            docs: ['Token A'];
+            type: 'pubkey';
+          },
+          {
+            name: 'token1Vault';
+            docs: ['Token B'];
+            type: 'pubkey';
+          },
+          {
+            name: 'lpMint';
+            docs: [
+              'Pool tokens are issued when A or B tokens are deposited.',
+              'Pool tokens can be withdrawn back to the original A or B token.',
+            ];
+            type: 'pubkey';
+          },
+          {
+            name: 'token0Mint';
+            docs: ['Mint information for token A'];
+            type: 'pubkey';
+          },
+          {
+            name: 'token1Mint';
+            docs: ['Mint information for token B'];
+            type: 'pubkey';
+          },
+          {
+            name: 'token0Program';
+            docs: ['token_0 program'];
+            type: 'pubkey';
+          },
+          {
+            name: 'token1Program';
+            docs: ['token_1 program'];
+            type: 'pubkey';
+          },
+          {
+            name: 'observationKey';
+            docs: ['observation account to store oracle data'];
+            type: 'pubkey';
+          },
+          {
+            name: 'authBump';
+            type: 'u8';
+          },
+          {
+            name: 'status';
+            docs: [
+              'Bitwise representation of the state of the pool',
+              'bit0, 1: disable deposit(value is 1), 0: normal',
+              'bit1, 1: disable withdraw(value is 2), 0: normal',
+              'bit2, 1: disable swap(value is 4), 0: normal',
+            ];
+            type: 'u8';
+          },
+          {
+            name: 'lpMintDecimals';
+            type: 'u8';
+          },
+          {
+            name: 'mint0Decimals';
+            docs: ['mint0 and mint1 decimals'];
+            type: 'u8';
+          },
+          {
+            name: 'mint1Decimals';
+            type: 'u8';
+          },
+          {
+            name: 'lpSupply';
+            docs: ['True circulating supply without burns and lock ups'];
+            type: 'u64';
+          },
+          {
+            name: 'protocolFeesToken0';
+            docs: ['The amounts of token_0 and token_1 that are owed to the liquidity provider.'];
+            type: 'u64';
+          },
+          {
+            name: 'protocolFeesToken1';
+            type: 'u64';
+          },
+          {
+            name: 'fundFeesToken0';
+            type: 'u64';
+          },
+          {
+            name: 'fundFeesToken1';
+            type: 'u64';
+          },
+          {
+            name: 'openTime';
+            docs: ['The timestamp allowed for swap in the pool.'];
+            type: 'u64';
+          },
+          {
+            name: 'recentEpoch';
+            docs: ['recent epoch'];
+            type: 'u64';
+          },
+          {
+            name: 'padding';
+            docs: ['padding for future updates'];
+            type: {
+              array: ['u64', 31];
+            };
+          },
+        ];
+      };
+    },
+    {
+      name: 'salePhase';
+      type: {
+        kind: 'struct';
+        fields: [
+          {
+            name: 'phaseId';
+            type: 'u32';
+          },
+          {
+            name: 'pricePerShare';
+            type: 'u64';
+          },
+          {
+            name: 'maxShares';
+            type: 'u64';
+          },
+          {
+            name: 'soldShares';
+            type: 'u64';
+          },
+          {
+            name: 'startTime';
+            type: 'i64';
+          },
+          {
+            name: 'endTime';
+            type: 'i64';
+          },
+          {
+            name: 'active';
+            type: 'bool';
+          },
+        ];
+      };
+    },
+    {
+      name: 'userPurchase';
+      type: {
+        kind: 'struct';
+        fields: [
+          {
+            name: 'user';
+            type: 'pubkey';
+          },
+          {
+            name: 'superiorAddress';
+            type: 'pubkey';
+          },
+          {
+            name: 'phaseId';
+            type: 'u32';
+          },
+          {
+            name: 'purchaseId';
+            type: 'u64';
+          },
+          {
+            name: 'shares';
+            type: 'u64';
+          },
+          {
+            name: 'tokenAmount';
+            type: 'u64';
+          },
+          {
+            name: 'claimedAmount';
+            type: 'u64';
+          },
+          {
+            name: 'purchaseTime';
+            type: 'i64';
+          },
+          {
+            name: 'vestingDays';
+            type: 'u64';
+          },
+          {
+            name: 'wsolAmount';
+            type: 'u64';
+          },
+          {
+            name: 'gdtcAmount';
+            type: 'u64';
+          },
+          {
+            name: 'burnGdtc';
+            type: 'bool';
+          },
+          {
+            name: 'remainingGdtc';
+            type: 'u64';
+          },
+          {
+            name: 'bioAmount';
+            type: 'u64';
+          },
+          {
+            name: 'burnBio';
+            type: 'bool';
+          },
+        ];
+      };
+    },
+  ];
+};

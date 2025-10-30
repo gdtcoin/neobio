@@ -1,0 +1,824 @@
+/**
+ * Program IDL in camelCase format in order to be used in JS/TS.
+ *
+ * Note that this is only a type helper and is not the actual IDL. The original
+ * IDL can be found at `target/idl/Stake_Program.json`.
+ */
+export type StakeProgram = {
+  address: 'FfTLXfiSaB72MRCJH2xtmuV4rXFQi24ubC85kq4LPi1h';
+  metadata: {
+    name: 'stakeProgram';
+    version: '0.1.0';
+    spec: '0.1.0';
+    description: 'Created with Anchor';
+  };
+  instructions: [
+    {
+      name: 'cancelStaking';
+      discriminator: [2, 183, 90, 76, 17, 140, 174, 5];
+      accounts: [
+        {
+          name: 'authority';
+          writable: true;
+          signer: true;
+        },
+        {
+          name: 'stakingInstance';
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [115, 116, 97, 107, 105, 110, 103, 95, 105, 110, 115, 116, 97, 110, 99, 101];
+              },
+            ];
+          };
+        },
+        {
+          name: 'userInstance';
+          docs: ['用户信息'];
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [117, 115, 101, 114];
+              },
+              {
+                kind: 'account';
+                path: 'authority';
+              },
+            ];
+          };
+        },
+        {
+          name: 'userLpTokenAccount';
+          docs: ['用户 LP Token 接收账户'];
+          writable: true;
+        },
+        {
+          name: 'gdtcLpInAccount';
+          docs: ['合约 LP Token Vault（接收用户质押的 LP）'];
+          writable: true;
+        },
+        {
+          name: 'tokenProgram';
+          address: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA';
+        },
+      ];
+      args: [
+        {
+          name: 'stakedInfoIndex';
+          type: 'u64';
+        },
+      ];
+    },
+    {
+      name: 'claimRewards';
+      discriminator: [4, 144, 132, 71, 116, 23, 151, 80];
+      accounts: [
+        {
+          name: 'authority';
+          writable: true;
+          signer: true;
+        },
+        {
+          name: 'stakingInstance';
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [115, 116, 97, 107, 105, 110, 103, 95, 105, 110, 115, 116, 97, 110, 99, 101];
+              },
+            ];
+          };
+        },
+        {
+          name: 'userInstance';
+          docs: ['用户信息'];
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [117, 115, 101, 114];
+              },
+              {
+                kind: 'account';
+                path: 'authority';
+              },
+            ];
+          };
+        },
+        {
+          name: 'userSuperGdtcTokenAccount';
+          docs: ['上级的 GDTC Token 账户（用于转发或发奖励）'];
+          writable: true;
+        },
+        {
+          name: 'userGdtcTokenAccount';
+          docs: ['用户的 GDTC Token 账户（用于接收奖励）'];
+          writable: true;
+        },
+        {
+          name: 'userGlobalPoolTokenAccount';
+          writable: true;
+        },
+        {
+          name: 'blackHoleBioAccount';
+          writable: true;
+        },
+        {
+          name: 'bioMintAccount';
+          writable: true;
+        },
+        {
+          name: 'gdtcRewardOutAccount';
+          docs: ['合约用于发放奖励的 GDTC 账户（Vault）'];
+          writable: true;
+        },
+        {
+          name: 'systemProgram';
+          address: '11111111111111111111111111111111';
+        },
+        {
+          name: 'tokenProgram';
+          address: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA';
+        },
+      ];
+      args: [
+        {
+          name: 'stakedInfoIndex';
+          type: 'u64';
+        },
+      ];
+    },
+    {
+      name: 'enterStaking';
+      discriminator: [6, 26, 79, 73, 227, 51, 221, 91];
+      accounts: [
+        {
+          name: 'stakingInstance';
+          docs: ['全局质押状态，必须尚未初始化'];
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [115, 116, 97, 107, 105, 110, 103, 95, 105, 110, 115, 116, 97, 110, 99, 101];
+              },
+            ];
+          };
+        },
+        {
+          name: 'userInstance';
+          docs: ['用户信息'];
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [117, 115, 101, 114];
+              },
+              {
+                kind: 'account';
+                path: 'authority';
+              },
+            ];
+          };
+        },
+        {
+          name: 'userLpTokenAccount';
+          writable: true;
+        },
+        {
+          name: 'gdtcLpInAccount';
+          docs: ['合约 LP Vault，接收用户 LP'];
+          writable: true;
+        },
+        {
+          name: 'authority';
+          docs: ['用户签名者'];
+          writable: true;
+          signer: true;
+        },
+        {
+          name: 'tokenProgram';
+          address: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA';
+        },
+      ];
+      args: [
+        {
+          name: 'lpStakingNumber';
+          type: 'u64';
+        },
+        {
+          name: 'stakeType';
+          type: 'u64';
+        },
+        {
+          name: 'stakedInfoIndex';
+          type: 'u64';
+        },
+      ];
+    },
+    {
+      name: 'initializeStaking';
+      discriminator: [184, 41, 251, 154, 146, 145, 197, 77];
+      accounts: [
+        {
+          name: 'stakingInstance';
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [115, 116, 97, 107, 105, 110, 103, 95, 105, 110, 115, 116, 97, 110, 99, 101];
+              },
+            ];
+          };
+        },
+        {
+          name: 'rewardTokenMint';
+        },
+        {
+          name: 'stakingTokenMint';
+        },
+        {
+          name: 'gdtcTokenMint';
+        },
+        {
+          name: 'authority';
+          writable: true;
+          signer: true;
+        },
+        {
+          name: 'systemProgram';
+          address: '11111111111111111111111111111111';
+        },
+        {
+          name: 'tokenProgram';
+          address: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA';
+        },
+        {
+          name: 'rent';
+          address: 'SysvarRent111111111111111111111111111111111';
+        },
+      ];
+      args: [
+        {
+          name: 'rewardPerSec3Months';
+          type: 'u64';
+        },
+        {
+          name: 'rewardPerSec6Months';
+          type: 'u64';
+        },
+        {
+          name: 'rewardPerSec12Months';
+          type: 'u64';
+        },
+        {
+          name: 'startRewardTimestamp';
+          type: 'u64';
+        },
+        {
+          name: 'gdtcPoolAddress';
+          type: 'pubkey';
+        },
+      ];
+    },
+    {
+      name: 'initializeUser';
+      discriminator: [111, 17, 185, 250, 60, 122, 38, 254];
+      accounts: [
+        {
+          name: 'stakingInstance';
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [115, 116, 97, 107, 105, 110, 103, 95, 105, 110, 115, 116, 97, 110, 99, 101];
+              },
+            ];
+          };
+        },
+        {
+          name: 'userInstance';
+          writable: true;
+          pda: {
+            seeds: [
+              {
+                kind: 'const';
+                value: [117, 115, 101, 114];
+              },
+              {
+                kind: 'account';
+                path: 'authority';
+              },
+            ];
+          };
+        },
+        {
+          name: 'authority';
+          writable: true;
+          signer: true;
+        },
+        {
+          name: 'systemProgram';
+          address: '11111111111111111111111111111111';
+        },
+        {
+          name: 'rent';
+          address: 'SysvarRent111111111111111111111111111111111';
+        },
+      ];
+      args: [
+        {
+          name: 'userSuperiorAccount';
+          type: 'pubkey';
+        },
+      ];
+    },
+  ];
+  accounts: [
+    {
+      name: 'stakingInstance';
+      discriminator: [136, 97, 142, 120, 237, 93, 134, 171];
+    },
+    {
+      name: 'user';
+      discriminator: [159, 117, 95, 227, 239, 151, 58, 236];
+    },
+  ];
+  errors: [
+    {
+      code: 6000;
+      name: 'invalidStakeType';
+      msg: 'Invalid stake type provided. The stake type must correspond to an existing pool.';
+    },
+    {
+      code: 6001;
+      name: 'invalidStakedInfoIndex';
+      msg: 'Invalid stake staked info index.';
+    },
+    {
+      code: 6002;
+      name: 'tokenAccountBalanceInsufficient';
+      msg: 'Insufficient token account balance.';
+    },
+    {
+      code: 6003;
+      name: 'clockUnavailable';
+      msg: 'Failed to fetch system clock.';
+    },
+    {
+      code: 6004;
+      name: 'mintAccountIsNotMatch';
+      msg: 'User token account mint does not match staking token mint.';
+    },
+    {
+      code: 6005;
+      name: 'overflow';
+      msg: 'Arithmetic overflow occurred.';
+    },
+    {
+      code: 6006;
+      name: 'underflow';
+      msg: 'Arithmetic underflow occurred.';
+    },
+    {
+      code: 6007;
+      name: 'userAlreadyStaked';
+      msg: 'User has already staked and cannot stake again.';
+    },
+    {
+      code: 6008;
+      name: 'noStakingToCancel';
+      msg: 'User has no staking to cancel.';
+    },
+    {
+      code: 6009;
+      name: 'stakingNotMatured';
+      msg: 'Staking period has not matured yet.';
+    },
+    {
+      code: 6010;
+      name: 'noRewardsToClaim';
+      msg: 'No rewards available to claim.';
+    },
+    {
+      code: 6011;
+      name: 'maxRewardsToClaim';
+      msg: 'Max available to claim.';
+    },
+    {
+      code: 6012;
+      name: 'insufficientRewardBalance';
+      msg: 'Insufficient reward account balance.';
+    },
+    {
+      code: 6013;
+      name: 'noStakingToClaimRewards';
+      msg: 'No Staking available to claim.';
+    },
+    {
+      code: 6014;
+      name: 'userSuperiorTokenAccountIsNotMatch';
+      msg: 'UserSuperiorTokenAccount  does not match.';
+    },
+    {
+      code: 6015;
+      name: 'userAccountIsNotMatch';
+      msg: 'User address  does not match.';
+    },
+    {
+      code: 6016;
+      name: 'needCliamRewards';
+      msg: 'User need cliam rewards.';
+    },
+    {
+      code: 6017;
+      name: 'invalidStakingInstance';
+      msg: 'The provided staking instance is not a valid staking instance for this contract.';
+    },
+    {
+      code: 6018;
+      name: 'stakingEnded';
+      msg: 'The staking has ended for this instance.';
+    },
+    {
+      code: 6019;
+      name: 'invalidUserInstance';
+      msg: 'The provided user instance is not a valid user instance for this contract.';
+    },
+    {
+      code: 6020;
+      name: 'pdaAccountIsNotMatch';
+      msg: 'Pda address  does not match.';
+    },
+    {
+      code: 6021;
+      name: 'userNotInitialized';
+      msg: 'User is not initialized';
+    },
+    {
+      code: 6022;
+      name: 'stakingInstanceNotInitialized';
+      msg: 'Staking instance is not initialized';
+    },
+    {
+      code: 6023;
+      name: 'poolNotActive';
+      msg: 'Pool is not active';
+    },
+    {
+      code: 6024;
+      name: 'stakeAmountBelowMinimum';
+      msg: 'Stake amount below minimum';
+    },
+    {
+      code: 6025;
+      name: 'stakeAmountAboveMaximum';
+      msg: 'Stake amount above maximum';
+    },
+    {
+      code: 6026;
+      name: 'stakingPeriodNotEnded';
+      msg: 'Staking period not ended';
+    },
+    {
+      code: 6027;
+      name: 'invalidRewardCalculation';
+      msg: 'Invalid reward calculation';
+    },
+    {
+      code: 6028;
+      name: 'insufficientPoolLiquidity';
+      msg: 'Insufficient pool liquidity';
+    },
+    {
+      code: 6029;
+      name: 'rewardRateTooHigh';
+      msg: 'Reward rate too high';
+    },
+    {
+      code: 6030;
+      name: 'invalidTimeParameters';
+      msg: 'Invalid time parameters';
+    },
+    {
+      code: 6031;
+      name: 'unauthorized';
+      msg: 'Unauthorized access';
+    },
+    {
+      code: 6032;
+      name: 'invalidStakeStatus';
+      msg: 'Invalid stake status';
+    },
+    {
+      code: 6033;
+      name: 'poolIsFull';
+      msg: 'Pool is full';
+    },
+    {
+      code: 6034;
+      name: 'invalidConfiguration';
+      msg: 'Invalid configuration';
+    },
+    {
+      code: 6035;
+      name: 'rewardDistributionFailed';
+      msg: 'Reward distribution failed';
+    },
+    {
+      code: 6036;
+      name: 'userNotFound';
+      msg: 'User not found';
+    },
+    {
+      code: 6037;
+      name: 'poolNotFound';
+      msg: 'Pool not found';
+    },
+    {
+      code: 6038;
+      name: 'invalidStakeDuration';
+      msg: 'Invalid stake duration';
+    },
+    {
+      code: 6039;
+      name: 'stakeAlreadyCancelled';
+      msg: 'Stake already cancelled';
+    },
+    {
+      code: 6040;
+      name: 'cannotCancelActiveStake';
+      msg: 'Cannot cancel active stake';
+    },
+    {
+      code: 6041;
+      name: 'invalidRewardClaim';
+      msg: 'Invalid reward claim';
+    },
+    {
+      code: 6042;
+      name: 'rewardCalculationOverflow';
+      msg: 'Reward calculation overflow';
+    },
+    {
+      code: 6043;
+      name: 'poolConfigurationError';
+      msg: 'Pool configuration error';
+    },
+    {
+      code: 6044;
+      name: 'userStatisticsError';
+      msg: 'User statistics error';
+    },
+    {
+      code: 6045;
+      name: 'invalidPoolState';
+      msg: 'Invalid pool state';
+    },
+    {
+      code: 6046;
+      name: 'stakeAmountZero';
+      msg: 'Stake amount zero';
+    },
+    {
+      code: 6047;
+      name: 'invalidUserAddress';
+      msg: 'Invalid user address';
+    },
+    {
+      code: 6048;
+      name: 'invalidPoolAddress';
+      msg: 'Invalid pool address';
+    },
+    {
+      code: 6049;
+      name: 'rewardPoolEmpty';
+      msg: 'Reward pool empty';
+    },
+    {
+      code: 6050;
+      name: 'invalidStakeTypeValue';
+      msg: 'Invalid stake type';
+    },
+    {
+      code: 6051;
+      name: 'poolMaintenanceMode';
+      msg: 'Pool maintenance mode';
+    },
+    {
+      code: 6052;
+      name: 'userBanned';
+      msg: 'User banned';
+    },
+    {
+      code: 6053;
+      name: 'poolSuspended';
+      msg: 'Pool suspended';
+    },
+    {
+      code: 6054;
+      name: 'invalidRewardRate';
+      msg: 'Invalid reward rate';
+    },
+    {
+      code: 6055;
+      name: 'timeCalculationError';
+      msg: 'Time calculation error';
+    },
+    {
+      code: 6056;
+      name: 'stateSynchronizationError';
+      msg: 'State synchronization error';
+    },
+    {
+      code: 6057;
+      name: 'stakingInstanceAlreadyInitialized';
+      msg: 'Staking instance has already been initialized.';
+    },
+    {
+      code: 6058;
+      name: 'invalidLpTokenOwner';
+      msg: 'invalidLpTokenOwner';
+    },
+    {
+      code: 6059;
+      name: 'invalidLpTokenMint';
+      msg: 'invalidLpTokenMint';
+    },
+    {
+      code: 6060;
+      name: 'invalidVaultOwner';
+      msg: 'invalidVaultOwner';
+    },
+    {
+      code: 6061;
+      name: 'invalidStakeAmount';
+      msg: 'invalidStakeAmount';
+    },
+  ];
+  types: [
+    {
+      name: 'staked';
+      type: {
+        kind: 'struct';
+        fields: [
+          {
+            name: 'depositedAmount';
+            type: 'u64';
+          },
+          {
+            name: 'rewardDebt';
+            type: 'u64';
+          },
+          {
+            name: 'accumulatedReward';
+            type: 'u64';
+          },
+          {
+            name: 'isStaked';
+            type: 'bool';
+          },
+          {
+            name: 'stakeType';
+            type: 'u64';
+          },
+          {
+            name: 'stakeStartTime';
+            type: 'u64';
+          },
+          {
+            name: 'stakeEndTime';
+            type: 'u64';
+          },
+          {
+            name: 'receivedReward';
+            type: 'u64';
+          },
+          {
+            name: 'canCancelStake';
+            type: 'bool';
+          },
+        ];
+      };
+    },
+    {
+      name: 'stakingInstance';
+      type: {
+        kind: 'struct';
+        fields: [
+          {
+            name: 'authority';
+            type: 'pubkey';
+          },
+          {
+            name: 'isInitialized';
+            type: 'bool';
+          },
+          {
+            name: 'rewardTokenMint';
+            type: 'pubkey';
+          },
+          {
+            name: 'stakingTokenMint';
+            type: 'pubkey';
+          },
+          {
+            name: 'secendRewardTokenMint';
+            type: 'pubkey';
+          },
+          {
+            name: 'pools';
+            type: {
+              array: [
+                {
+                  defined: {
+                    name: 'stakingPool';
+                  };
+                },
+                3,
+              ];
+            };
+          },
+          {
+            name: 'gdtcPoolAddress';
+            type: 'pubkey';
+          },
+        ];
+      };
+    },
+    {
+      name: 'stakingPool';
+      type: {
+        kind: 'struct';
+        fields: [
+          {
+            name: 'stakeType';
+            type: 'u64';
+          },
+          {
+            name: 'rewardTokenPerSec';
+            type: 'u64';
+          },
+          {
+            name: 'accumulatedRewardPerShare';
+            type: 'u64';
+          },
+          {
+            name: 'lastRewardTimestamp';
+            type: 'u64';
+          },
+          {
+            name: 'totalShares';
+            type: 'u64';
+          },
+        ];
+      };
+    },
+    {
+      name: 'user';
+      type: {
+        kind: 'struct';
+        fields: [
+          {
+            name: 'totalDepositedAmount';
+            type: 'u64';
+          },
+          {
+            name: 'userSuperiorAccount';
+            type: 'pubkey';
+          },
+          {
+            name: 'stakedInfo';
+            type: {
+              array: [
+                {
+                  defined: {
+                    name: 'staked';
+                  };
+                },
+                10,
+              ];
+            };
+          },
+          {
+            name: 'isinit';
+            type: 'bool';
+          },
+          {
+            name: 'userAddress';
+            type: 'pubkey';
+          },
+        ];
+      };
+    },
+  ];
+};

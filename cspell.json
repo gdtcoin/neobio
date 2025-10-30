@@ -1,0 +1,22 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "language": "en,en-US",
+  "allowCompoundWords": true,
+  "ignorePaths": ["node_modules", "pnpm-lock.yaml", "dist", "src/locales"],
+  "words": [
+    "antd",
+    "antdv",
+    "corejs",
+    "Gdtc",
+    "isinit",
+    "Orcle",
+    "pxtorem",
+    "raydium",
+    "sider",
+    "unplugin",
+    "vant",
+    "vueuse",
+    "wsol"
+  ]
+}

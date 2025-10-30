@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "stylelint.vscode-stylelint",
+    "streetsidesoftware.code-spell-checker",
+    "ChakrounAnas.turbo-console-log",
+    "lokalise.i18n-ally",
+    "vscode-icons-team.vscode-icons"
+  ]
+}
